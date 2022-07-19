@@ -1,2 +1,2 @@
-# Bot-Firulais-2.0
+# Bot-Firulais
 Proyecto del bot mejorado

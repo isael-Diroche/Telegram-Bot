@@ -35,7 +35,8 @@ class Funciones:
             "horario": "AgACAgEAAxkDAAIp4WKRmN4StpE_RU9Hhb-6zEU3-cBBAALFqjEbbUcJRJbwqTMM3AyUAQADAgADcwADJAQ",
             "horario-kelvyn": "AgACAgEAAxkBAAIp7WKRmNI08rwlXj11jEClZze48VqBAALqqjEbCF4BRIHl36r5HCBQAQADAgADcwADJAQ",
             "horario-bryan": "AgACAgEAAxkBAAIqvmKZOULq-7Q45I0uC-Xs3kS_SNMoAALLqTEbJIpBREKWEiBN4nC_AQADAgADcwADJAQ",
-            "pensum": "AgACAgEAAxkBAAIqwmKZOaxEjLw5cWEl6xfrMxd5ck3KAAICqjEbD2NoRAABrvALEEXAcQEAAwIAA3MAAyQE"}
+            "pensum": "AgACAgEAAxkBAAIqwmKZOaxEjLw5cWEl6xfrMxd5ck3KAAICqjEbD2NoRAABrvALEEXAcQEAAwIAA3MAAyQE",
+            "calendario": "AgACAgEAAx0CUEEdpwABBU6wYx0qgIqynBRNDXLmsVxy1ZqsPc0AAtWrMRvxAuhEHndRV5OGCroBAAMCAANzAAMpBA"}
         buttons = [[
             bot.InlineKeyboardButton(text="eliminar mensaje", callback_data="btn_cerrar")
         ]]

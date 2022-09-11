@@ -134,6 +134,9 @@ def mensajes(update: Update, context: CallbackContext) -> None:
                 elif y == 'pensum':
                     funcion.recibir_imagen("pensum")
 
+                elif y == 'calendario':
+                    funcion.recibir_imagen("calendario")
+
                 elif y == 'traduce':
                     update.message.reply_text("Dime que quieres que traduzca?")
                     return bot.TRADUCIR

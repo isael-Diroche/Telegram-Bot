@@ -1,9 +1,14 @@
 # IMPORT MODULES
+import re
+import random
+from src.bot.filters.questions import *
+import src.bot.filters
+
 from bot import *
-import filtros.ext.filtro
+import src.bot.filters.main
 
 # YOUR CODE HERE
-grupo_id = [-1001705096084, -1001795333102, -1001147710430, -1001346444711]
+grupo_id = [-1001705096084]
 
 def active_user():  # Con esta funcion retornamos los id_user de los usuarios que se encuentren en la base de datos
     # firebase = firebase.FirebaseApplication("https://pythonbdtest-50a94-default-rtdb.firebaseio.com/", None)
@@ -76,7 +81,7 @@ def mensajes(update: Update, context: CallbackContext) -> None:
 
     id_usuario = user.id
     text = str(message.text).lower()
-    funcion = filtros.ext.filtro.Funciones(update, context, chat, user, message)
+    funcion = src.bot.filters.main.Funciones(update, context, chat, user, message)
 
     if id_usuario not in usuarios:
        print("El usuario requiere ser registrado\n", user)
@@ -85,63 +90,62 @@ def mensajes(update: Update, context: CallbackContext) -> None:
     else:
         print("Si esta!")
 
-    msg = text.split()
-    for x in msg:
-        if x == "#":
-            context.bot.sendMessage(chat_id=chat.id, text="Aqui una lista de los # que puedes utilizar")
+    def get_response(user_input):
+        split_message = re.split(r'\s|[,:;.?!-_]\s*', user_input.lower())
+        response = check_all_messages(split_message)
+        return response
 
-        elif x == "hola":
-            context.bot.sendMessage(chat_id=chat.id, text=f"Hola {user.first_name}")
+    def message_probability(user_message, recognized_words, single_response= False, required_word=[]):
+        message_certainty = 0
+        has_required_words = True
 
-        elif x == "adios":
-            context.bot.sendMessage(chat_id=chat.id, text=f"Adios {user.first_name}")
+        for word in user_message:
+            if word in recognized_words:
+                message_certainty += 1
 
-        elif x == "isael":
-            user_id = 1641249828
-            funcion.alertar_usuario(user_id)
+        percentage = float(message_certainty) / float (len(recognized_words))
 
-        elif x == "bryan":
-            user_id = 1484400775
-            funcion.alertar_usuario(user_id)
-
-        elif x == 'bot':
-            for y in msg:
-                if y == 'hora':
-                    funcion.recibir_hora()
-
-                elif y == 'broma':
-                    funcion.recibir_broma()
-
-                elif y == 'chiste':
-                    funcion.recibir_chiste()
-
-                elif y == 'horario':
-
-                    for z in msg:
-
-                        if z == "isael":
-                            funcion.recibir_imagen("horario")
-
-                        elif z == "bryan":
-                            funcion.recibir_imagen("horario-bryan")
-
-                        elif z == "kelvyn":
-                            funcion.recibir_imagen("horario-kelvyn")
-
-                        else:
-                            pass
-
-                elif y == 'pensum':
-                    funcion.recibir_imagen("pensum")
-
-                elif y == 'calendario':
-                    funcion.recibir_imagen("calendario")
-
-                elif y == 'traduce':
-                    update.message.reply_text("Dime que quieres que traduzca?")
-                    return bot.TRADUCIR
-
+        for word in required_word:
+            if word not in user_message:
+                has_required_words = False
+                break
+        if has_required_words or single_response:
+            return int(percentage * 100)
         else:
-            pass
+            return 0
+
+    def check_all_messages(message):
+            highest_prob = {}
+
+            def response(bot_response, list_of_words, single_response = False, required_words = []):
+                nonlocal highest_prob
+                highest_prob[bot_response] = message_probability(message, list_of_words, single_response, required_words)
+
+            response(saludos[random.randrange(3)], saludos_user, single_response = False)
+            response(carreras, carreras_user, single_response = True)
+            response(redes_sociales, redes_sociales_user, single_response = True,)
+            response(admision, admision_user, single_response = True)
+            response(info, info_user, single_response = True)
+            response(ubicacion, ubicacion_user, single_response = True)
+            response(valores, valores_user, single_response = True)
+            response(contacto, contacto_user, single_response = True)
+            response(transporte, transporte_user, single_response = True)
+            response(biblioteca, biblioteca_user, single_response = True)
+            response(residencia, residencia_user, single_response = True)
+
+            best_match = max(highest_prob, key=highest_prob.get)
+            #print(highest_prob)
+
+            return unknown() if highest_prob[best_match] < 1 else best_match
+
+    def unknown():
+        unknown = ['Puedes decirlo de nuevo?', 'No estoy seguro de lo quieres', 'Búscalo en google a ver que tal', 'No te entiendo']
+        
+        response = unknown[random.randrange(3)]
+        return response
+        #context.bot.sendMessage(chat_id=chat.id, text=f"{response}")
+
+    #get_response(x)
+    context.bot.sendMessage(chat_id=chat.id, text=f"{get_response(str(message.text))}")
 
     print(f"message: {user.first_name} - {text}")

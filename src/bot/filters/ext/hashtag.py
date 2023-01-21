@@ -1,6 +1,6 @@
 # IMPORT MODULES
-import filtros.ext.filtro
-import comandos
+import src.bot.filters.main
+import src.bot.commands
 
 # YOUR CODE HERE
 
@@ -10,7 +10,7 @@ def filtro_hashtag(update, context):
     message = update.effective_message
 
     # menu = Menu(update, context)
-    funcion = filtros.ext.filtro.Funciones(update, context, chat, user, message)
+    funcion = src.bot.filters.main.Funciones(update, context, chat, user, message)
 
 
     get_members = context.bot.get_chat_member(chat_id=chat.id, user_id=user.id)
@@ -75,7 +75,7 @@ def filtro_hashtag(update, context):
             borrar_mensaje()
 
         elif x == '#mute':
-            tiempo = filtros.ext.filtro.datetime.utcnow() + filtros.ext.filtro.timedelta(minutes=5)
+            tiempo = src.bot.filters.main.datetime.utcnow() + src.bot.filters.main.timedelta(minutes=5)
 
             current = eval(str(context.bot.getChat(chat_id=chat.id).permissions))
             new = {'can_send_messages': False, 'can_send_media_messages': False, 'can_send_polls': False,
@@ -148,9 +148,9 @@ def filtro_hashtag(update, context):
         elif x == '#traduce':
             comandos.ext.comandos.comando_translate(update, context)
 
-
         elif x == '#menu':
-            menu.menu_isael()
+            #menu.menu_isael()
+            mensaje_defecto()
             borrar_mensaje()
 
         elif x == '#pensum':
@@ -163,6 +163,7 @@ def filtro_hashtag(update, context):
 
         elif x == '#recuerda':
             # recordar(mensaje, update, context)
+            mensaje_defecto()
             borrar_mensaje()
 
         elif x == '#frase':

@@ -6,8 +6,8 @@ import os
 
 import bot
 from bot import *
-from filtros.ext.filtro import Funciones
-from database.ext.conexion import *
+from src.bot.filters.main import Funciones
+from src.conexion import *
 
 # YOUR CODE HERE
 translator = Translator()
@@ -62,7 +62,7 @@ class ComandosEspeciales:
             ("/rename", "Cambia el nombre de un archivo (PDF only)"),
             ("/report", "Reportar algun cambio o mejora"),
         ]
-        mensaje_start = "Hola {} gracias por activarme,\npor lo que veo aqui hay {} miembros y tu eres {} del grupo.\n\nSupongo que quieres saber las cosas en las que puedo ayudarte por lo que aqui te dejo mi  <a href='https://telegra.ph/Firulais-Documentacion-05-27'>documentacion</a>. \n\ncontacta con el desarrollador @isael_diroche".format(
+        mensaje_start = "Hola {} gracias por activarme,\npor lo que veo aqui hay {} miembros y tu eres {} del grupo.\n\nSupongo que quieres saber las cosas en las que puedo ayudarte por lo que aqui te dejo mi  <a href='https://telegra.ph/Firulais-Documentacion-05-27'>documentacion</a>. \n\ncontacta con el desarrollador @IsaelDiroche".format(
             self.user.first_name, get_members_count, get_members)
         buttons = [[
             bot.InlineKeyboardButton(text="contactar programador", callback_data="btn_contacto")

@@ -2,8 +2,8 @@
 
 import bot
 from bot import *
-from filtros.hashtag import *
-from filtros.mention import *
+from src.bot.filters.ext.hashtag import *
+from src.bot.filters.ext.mention import *
 
 from datetime import timezone, datetime, timedelta
 

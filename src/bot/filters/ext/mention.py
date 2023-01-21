@@ -1,5 +1,5 @@
 # IMPORT MODULES
-import filtros.ext.filtro
+import src.bot.filters.main
 
 
 # YOUR CODE HERE
@@ -11,7 +11,7 @@ def filtro_mention(update, context):
 
     text = str(message.text).lower().split()
 
-    funcion = filtros.ext.filtro.Funciones(update, context, chat, user, message)
+    funcion = src.bot.filters.main.Funciones(update, context, chat, user, message)
 
     for x in text:
         if x == "@isael_diroche":

@@ -5,17 +5,18 @@ from telegram.ext import ConversationHandler, CommandHandler, Updater, Dispatche
 
 import datetime, time
 
-from comandos.ext.comandos import *
-from database.ext.conexion import *
-from filtros.ext.mensajes import *
-from filtros.ext.filtro import *
-from botones.ext.botones import *
-from comandos.ext.conversation import *
+from src.bot.commands.main import *
+from src.conexion import *
+from src.bot.filters.ext.mensajes import *
+from src.bot.filters.main import *
+from src.bot.buttons.main import *
+from src.bot.commands.ext.conversation import *
 
 # YOUR CODE HERE
 
 # TOKEN = os.environ['TOKEN']
-TOKEN = "1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE"
+TOKEN = "1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4"
+#1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE
 
 TRADUCIR, BUSCAR= range(2)
 

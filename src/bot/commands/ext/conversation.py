@@ -1,10 +1,10 @@
 # IMPORT MODULES
 
 import bot
-import comandos.ext.comandos
+import src.bot.commands.main
 from bot import *
-from comandos.ext.comandos import *
-from database.ext.conexion import *
+from src.bot.commands.main import *
+from src.conexion import *
 
 # YOUR CODE HERE
 
@@ -57,7 +57,7 @@ def archivar_conversation(update, context):
 
         try:
             registrar_tarea_firebase(datos=datos)
-            especial = comandos.ext.comandos.ComandosEspeciales(update, context)
+            especial = src.bot.commands.main.ComandosEspeciales(update, context)
             especial.archivar_documento()
         except:
             print("no se pudieron guardar")

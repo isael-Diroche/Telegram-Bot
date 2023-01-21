@@ -39,4 +39,3 @@ biblioteca_user = ['biblioteca', 'libros', 'donde leer', 'lectura','leer']
 
 residencia = 'Nuestra Residencia académica ofrece alojamiento a los estudiantes activos de educación superior del Instituto Tecnológico de las Américas, dando prioridad a los jóvenes provenientes de las diferentes provincias del país.'
 residencia_user = ['residencia', 'residir']
-

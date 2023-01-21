@@ -90,62 +90,67 @@ def mensajes(update: Update, context: CallbackContext) -> None:
     else:
         print("Si esta!")
 
-    def get_response(user_input):
-        split_message = re.split(r'\s|[,:;.?!-_]\s*', user_input.lower())
-        response = check_all_messages(split_message)
-        return response
+    msg = text.split()
 
-    def message_probability(user_message, recognized_words, single_response= False, required_word=[]):
-        message_certainty = 0
-        has_required_words = True
+    for x in msg:
+        if x == "#":
+            context.bot.sendMessage(chat_id=chat.id, text="Aqui una lista de los # que puedes utilizar")
 
-        for word in user_message:
-            if word in recognized_words:
-                message_certainty += 1
+        elif x == "bot":
+            def get_response(user_input):
+                split_message = re.split(r'\s|[,:;.?!-_]\s*', user_input.lower())
+                response = check_all_messages(split_message)
+                return response
 
-        percentage = float(message_certainty) / float (len(recognized_words))
+            def message_probability(user_message, recognized_words, single_response= False, required_word=[]):
+                message_certainty = 0
+                has_required_words = True
 
-        for word in required_word:
-            if word not in user_message:
-                has_required_words = False
-                break
-        if has_required_words or single_response:
-            return int(percentage * 100)
-        else:
-            return 0
+                for word in user_message:
+                    if word in recognized_words:
+                        message_certainty += 1
 
-    def check_all_messages(message):
-            highest_prob = {}
+                percentage = float(message_certainty) / float (len(recognized_words))
 
-            def response(bot_response, list_of_words, single_response = False, required_words = []):
-                nonlocal highest_prob
-                highest_prob[bot_response] = message_probability(message, list_of_words, single_response, required_words)
+                for word in required_word:
+                    if word not in user_message:
+                        has_required_words = False
+                        break
+                if has_required_words or single_response:
+                    return int(percentage * 100)
+                else:
+                    return 0
 
-            response(saludos[random.randrange(3)], saludos_user, single_response = False)
-            response(carreras, carreras_user, single_response = True)
-            response(redes_sociales, redes_sociales_user, single_response = True,)
-            response(admision, admision_user, single_response = True)
-            response(info, info_user, single_response = True)
-            response(ubicacion, ubicacion_user, single_response = True)
-            response(valores, valores_user, single_response = True)
-            response(contacto, contacto_user, single_response = True)
-            response(transporte, transporte_user, single_response = True)
-            response(biblioteca, biblioteca_user, single_response = True)
-            response(residencia, residencia_user, single_response = True)
+            def check_all_messages(message):
+                    highest_prob = {}
 
-            best_match = max(highest_prob, key=highest_prob.get)
-            #print(highest_prob)
+                    def response(bot_response, list_of_words, single_response = False, required_words = []):
+                        nonlocal highest_prob
+                        highest_prob[bot_response] = message_probability(message, list_of_words, single_response, required_words)
 
-            return unknown() if highest_prob[best_match] < 1 else best_match
+                    response(saludos[random.randrange(3)], saludos_user, single_response = False)
+                    response(carreras, carreras_user, single_response = True)
+                    response(redes_sociales, redes_sociales_user, single_response = True,)
+                    response(admision, admision_user, single_response = True)
+                    response(info, info_user, single_response = True)
+                    response(ubicacion, ubicacion_user, single_response = True)
+                    response(valores, valores_user, single_response = True)
+                    response(contacto, contacto_user, single_response = True)
+                    response(transporte, transporte_user, single_response = True)
+                    response(biblioteca, biblioteca_user, single_response = True)
+                    response(residencia, residencia_user, single_response = True)
 
-    def unknown():
-        unknown = ['Puedes decirlo de nuevo?', 'No estoy seguro de lo quieres', 'Búscalo en google a ver que tal', 'No te entiendo']
-        
-        response = unknown[random.randrange(3)]
-        return response
-        #context.bot.sendMessage(chat_id=chat.id, text=f"{response}")
+                    best_match = max(highest_prob, key=highest_prob.get)
+                    #print(highest_prob)
 
-    #get_response(x)
-    context.bot.sendMessage(chat_id=chat.id, text=f"{get_response(str(message.text))}")
+                    return unknown() if highest_prob[best_match] < 1 else best_match
+
+            def unknown():
+                unknown = ['Puedes decirlo de nuevo?', 'No estoy seguro de lo quieres', 'Búscalo en google a ver que tal', 'No te entiendo']
+                
+                response = unknown[random.randrange(3)]
+                return response
+
+            context.bot.sendMessage(chat_id=chat.id, text=f"{get_response(str(message.text))}")
 
     print(f"message: {user.first_name} - {text}")

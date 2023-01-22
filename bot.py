@@ -15,8 +15,8 @@ from src.bot.commands.ext.conversation import *
 # YOUR CODE HERE
 
 # TOKEN = os.environ['TOKEN']
-TOKEN = "1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4"
-#1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE
+TOKEN = "1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE"
+#1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4
 
 TRADUCIR, BUSCAR= range(2)
 

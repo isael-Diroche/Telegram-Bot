@@ -1,9 +1,20 @@
+import wikipedia
+from datetime import timezone, datetime, timedelta
+
+
+def recibir_hora():
+    now_utc = datetime.now(timezone('UTC'))
+    fecha = now_utc.astimezone(timezone("America/Santo_Domingo"))
+    res = fecha.strftime('%I:%M:%S %p')
+    return res
+
+######################################################################################################################################################
+
 saludos = ['Hola', 'Hello', 'Buenas', 'Aqui estamos']
 saludos_user = ['hola', 'klk', 'saludos', 'buenas']
 
-carreras = 'Algunas de las carreras del ITLA son: Mecatronica, Desarrollo de Software, Multimedia, CyberSeguridad, ' \
-           'Ciencia de Datos, ,Telecomunicaciones, Redes, Sonido entre otras.'
-carreras_user = ['carreras', 'cuales carreras']
+carreras = [f'no me se la hora']
+carreras_user = ['hora', 'horario', 'cual es']
 
 ubicacion = 'El ITLA esta ubicado en Autopista Las Américas, Km. 27, PCSD, La Caleta, Boca Chica 11606.'
 ubicacion_user = ['ubicacion', 'ubicados', 'ubicado', 'se encuentra', 'que lugar', 'ubica']

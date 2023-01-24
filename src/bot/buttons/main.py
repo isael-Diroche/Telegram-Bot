@@ -3,7 +3,7 @@ from bot import *
 
 # YOUR CODE HERE
 
-def botones_eliminar(update, context):
+def detele_button(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     query.answer()
     query.message.delete()

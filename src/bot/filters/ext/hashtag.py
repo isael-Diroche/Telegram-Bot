@@ -6,3 +6,4 @@ from bot import *
 
 def filter_hashtag(update: Update, context: CallbackContext) -> None:
     pass
+

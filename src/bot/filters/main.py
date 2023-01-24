@@ -1,7 +1,8 @@
 # IMPORT MODULES
 
-# YOUR CODE HERE
+from bot import *
 
+# YOUR CODE HERE
 class Filter:
 
     def __init__(self) -> None:
@@ -9,4 +10,6 @@ class Filter:
 
     def user_alert(self):
         pass
-        
+    
+    
+

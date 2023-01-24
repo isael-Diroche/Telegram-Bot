@@ -2,15 +2,18 @@
 from telegram import CallbackQuery, Update, ParseMode, ChatAction, ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton, ReplyKeyboardRemove, ReplyKeyboardMarkup
 from telegram.ext import ConversationHandler, CommandHandler, Updater, Dispatcher, Filters, CallbackQueryHandler, CallbackContext, MessageHandler
 
+from googletrans import Translator
+
 #from migrations import migrate
 from src.bot.filters.ext import hashtag, mention
 from src.bot.filters.ext.messages import messages
+from src.bot.commands.main import *
 
 # YOUR CODE HERE
 
 # TOKEN = os.environ['TOKEN']
-TOKEN = "1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4"
-#1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE
+TOKEN = "1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE"
+#1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4
 
 TRADUCIR, BUSCAR= range(2)
 
@@ -29,15 +32,12 @@ def main() -> None:
     dp = updater.dispatcher
 
     # COMANDOS PRINCIPALES
-    #dp.add_handler(CommandHandler(command="start", callback=comando_start))
-    #dp.add_handler(CommandHandler(command="help", callback=comando_help))
-    #dp.add_handler(CommandHandler(command="menu", callback=comando_menu))
-    #dp.add_handler(CommandHandler(command="rename", callback=comando_rename))
-    #dp.add_handler(CommandHandler(command="text", callback=comando_to_text))
-    #dp.add_handler(CommandHandler(command="text_extract", callback=comando_text_extract))
-    #dp.add_handler(CommandHandler(command="voice", callback=comando_voice))
-    #dp.add_handler(CommandHandler(command="file", callback=comando_file))
-    #dp.add_handler(CommandHandler(command="reporte", callback=comando_reporte))
+    dp.add_handler(CommandHandler(command="start", callback=start_command))
+    dp.add_handler(CommandHandler(command="help", callback=help_command))
+    dp.add_handler(CommandHandler(command="report", callback=report_command))
+    dp.add_handler(CommandHandler(command="contacto", callback=contact_command))
+    dp.add_handler(CommandHandler(command="traduce", callback=traducir_command))
+
 
     # FILTROS PRINCIPALES
     dp.add_handler(MessageHandler(filters=Filters.entity("mention"), callback=mention.filter_mention))

@@ -1,4 +1,4 @@
-from bot import *
+from bot import firebase, insertar_tarea, insertar_materia, insertar
 
 def migrate() -> None:
     # conexion = Conexion()

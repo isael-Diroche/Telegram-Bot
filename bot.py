@@ -3,16 +3,21 @@ from telegram import CallbackQuery, Update, ParseMode, ChatAction, ChatPermissio
 from telegram.ext import ConversationHandler, CommandHandler, Updater, Dispatcher, Filters, CallbackQueryHandler, CallbackContext, MessageHandler
 
 from googletrans import Translator
+from firebase import firebase
+import sqlite3
+from gtts import gTTS
+import os
 
 #from migrations import migrate
-from src.bot.filters.ext import hashtag, mention
+from src.bot.filters.main import *
+from src.bot.filters.ext import mention, hashtag
 from src.bot.filters.ext.messages import messages
 from src.bot.commands.main import *
+from src.conexion import *
 
 # YOUR CODE HERE
 
-# TOKEN = os.environ['TOKEN']
-TOKEN = "1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4"
+TOKEN = '1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4'
 #1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE
 
 TRADUCIR, BUSCAR= range(2)
@@ -34,12 +39,12 @@ def main() -> None:
     # COMANDOS PRINCIPALES
     dp.add_handler(CommandHandler(command="start", callback=start_command))
     dp.add_handler(CommandHandler(command="help", callback=help_command))
-    dp.add_handler(CommandHandler(command="report", callback=report_command))
+    dp.add_handler(CommandHandler(command="reporte", callback=report_command))
     dp.add_handler(CommandHandler(command="contacto", callback=contact_command))
     dp.add_handler(CommandHandler(command="traduce", callback=traducir_command))
+    dp.add_error_handler(callback=error)
 
-
-    # FILTROS PRINCIPALES
+    # FILTROS PRINCIPALES 
     dp.add_handler(MessageHandler(filters=Filters.entity("mention"), callback=mention.filter_mention))
     dp.add_handler(MessageHandler(filters=Filters.entity("hashtag"), callback=hashtag.filter_hashtag))
 

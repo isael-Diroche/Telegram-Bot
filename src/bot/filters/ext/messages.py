@@ -1,6 +1,6 @@
 # IMPORT MODULES
 
-from bot import *
+from bot import Update, CallbackContext
 
 # YOUR CODE HERE
 
@@ -9,4 +9,4 @@ def messages(update: Update, context: CallbackContext) -> None:
     message = update.effective_message
     text = str(message.text).lower() 
     
-    print(f"from: {user.first_name}\n msg: {text}")
+    print(f"from: {user.first_name}\n msg: {text}\n")

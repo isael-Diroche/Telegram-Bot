@@ -1,11 +1,8 @@
 # IMPORT MODULES
 
-from firebase import firebase
-import sqlite3
+from bot import firebase, sqlite3
 
 # YOUR CODE HERE
-
-#! AQUI NO META MANO SI USTE NO SABE DE ETO' 😂
 
 firebase = firebase.FirebaseApplication("https://pythonbdtest-50a94-default-rtdb.firebaseio.com/", None)
 

@@ -1,20 +1,9 @@
 # IMPORT MODULES
 
-from bot import Update, CallbackContext, Translator, ParseMode, ConversationHandler
+from bot import Update, CallbackContext, ConversationHandler, Translator, ParseMode
 
 # YOUR CODE HERE
 translator = Translator()
-
-vcard = """BEGIN:VCARD
-VERSION:3.0
-ORG:Instituto Tecnologico de las americas
-TITLE:Estudiante
-TEL;TYPE=WORK,VOICE:+1(809)678-1819
-ADR;TYPE=WORK,PREF:;;Villa altagracia;Santo Domingo;Republica Domnicana
-BDAY:6 Septiembre 2002
-EMAIL;PREF=1:isaeldiroche00@gmail.com
-NOTE:Contactame para mas información
-END:VCARD"""
 
 class Command:
 
@@ -26,14 +15,13 @@ class Command:
         self.user = update.effective_user
         self.message = update.effective_message
 
-
-
     def start(self):
         comandos = [
             ("/start", "Inicio del bot"),
             ("/help", "Pedir ayuda al bot"),
             ("/traducir", "Traducir algun texto ingles/español"),
-            ("/report", "Reportar algun cambio o mejora"),
+            ("/reporte", "Reportar algun cambio o mejora"),
+            ("/contacto", "En bot envia un contacto especificado"),
         ]
 
         msg = "Hola fulano gracias por activarme,\npor lo que veo aqui hay que se yo cuantos miembros y tu eres aguien nose del grupo.\n\nSupongo que quieres saber las cosas en las que puedo ayudarte por lo que aqui te dejo mi  <a href='https://telegra.ph/Firulais-Documentacion-05-27'>documentacion</a>. \n\ncontacta con el desarrollador @IsaelDiroche"
@@ -92,16 +80,27 @@ class Command:
     def voice(self):
         pass
 
-    def contact(self, card):
+    def contact(self):
+        vcard = """BEGIN:VCARD
+                    VERSION:3.0
+                    ORG:Instituto Tecnologico de las americas
+                    TITLE:Estudiante
+                    TEL;TYPE=WORK,VOICE:+1(809)678-1819
+                    ADR;TYPE=WORK,PREF:;;Villa altagracia;Santo Domingo;Republica Domnicana
+                    BDAY:6 Septiembre 2002
+                    EMAIL;PREF=1:isaeldiroche00@gmail.com
+                    NOTE:Contactame para mas información
+                   END:VCARD"""
+
         self.context.bot.sendContact(chat_id=self.chat.id,
                                      phone_number="+18096781819",
                                      first_name="Isael",
                                      last_name="Diroche",
-                                     vcard=card,
+                                     vcard=vcard,
                                      disable_notification=False)
 
 def start_command(update: Update, context: CallbackContext) -> None:
-    cm = Command(update, context)
+    cm = Command()
     cm.start()
 
 def help_command(update: Update, context: CallbackContext) -> None:
@@ -122,4 +121,4 @@ def voice_command(update: Update, context: CallbackContext) -> None:
 
 def contact_command(update: Update, context: CallbackContext) -> None:
     cm = Command(update, context)
-    cm.contact(card=vcard)
+    cm.contact()

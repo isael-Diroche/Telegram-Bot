@@ -16,6 +16,45 @@ Este documento expresa las actualizaciones realizadas en el Bot para la facilita
  1. `pip install telegram` 
  2. `pip install python-telegram-bot`.
 
+## Project Strucutre
+
+
+``` php
+├── src/
+│   ├── bot/
+│   │   ├── buttons/
+│   │   │   └── main.py
+│   │   ├── commands/
+|   |   |   ├── ext/
+|   |   |   |   └── conversation.py
+|   |   |   └── main.py
+│   │   └── filters/
+|   |   |   ├── ext/
+|   |   |   |   ├── hashtag.py
+|   |   |   |   ├── mention.py
+|   |   |   |   └── messages.py
+|   |   |   ├── main.py
+|   |   |   └── questions.py
+│   ├── static/
+│   │   ├── documents/
+│   │   |   └── .keep
+│   │   ├── images/
+│   │   |   └── .keep
+│   │   └── notes/
+│   │   |   ├── .keep
+│   │   |   └── nota.mp3
+│   ├── conexion.py
+│   ├── data.sqbpro
+│   └── data.sqlite3
+├── .gitignore
+├── bot.py
+├── migrations.py
+├── Profile
+├── README.md
+├── requirements.txt
+└── runtime.txt
+```
+
 ## ➜ Indicaciones
 
 - Lo primero es instalar las librerias necesarias desde la consola o la terminal de nuestro IDLE faborito usando los comandos `pip install telegram` y tambien `pip install python-telegram-bot.` con esto ya poseemos las librerias principales de telegram.

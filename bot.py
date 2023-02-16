@@ -11,8 +11,8 @@ from src.bot.commands.main import *
 
 # YOUR CODE HERE
 
-# TOKEN = os.environ['TOKEN']
-TOKEN = "1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE"
+TOKEN = os.environ['TOKEN']
+#TOKEN = "1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE"
 #1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4
 
 TRADUCIR, BUSCAR= range(2)

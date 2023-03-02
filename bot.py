@@ -9,6 +9,8 @@ from src.bot.filters.ext import hashtag, mention
 from src.bot.filters.ext.messages import messages
 from src.bot.commands.main import *
 
+import os
+
 # YOUR CODE HERE
 
 TOKEN = os.environ['TOKEN']

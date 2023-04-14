@@ -6,6 +6,8 @@ from googletrans import Translator
 from firebase import firebase
 import sqlite3
 from gtts import gTTS
+import random
+import re
 import os
 
 #from migrations import migrate
@@ -18,7 +20,11 @@ from src.conexion import *
 # YOUR CODE HERE
 
 TOKEN = '1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4'
+#@isael_ayuda_bot
 #1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE
+
+#@isael_automatize_bot
+#1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4
 
 TRADUCIR, BUSCAR= range(2)
 
@@ -42,6 +48,7 @@ def main() -> None:
     dp.add_handler(CommandHandler(command="reporte", callback=report_command))
     dp.add_handler(CommandHandler(command="contacto", callback=contact_command))
     dp.add_handler(CommandHandler(command="traduce", callback=traducir_command))
+    dp.add_handler(CommandHandler(command="voice", callback=voice_command))
     dp.add_error_handler(callback=error)
 
     # FILTROS PRINCIPALES 

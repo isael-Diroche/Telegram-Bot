@@ -17,13 +17,12 @@ from src.bot.filters.ext.messages import messages
 from src.bot.commands.main import *
 from src.conexion import *
 
+import os
+
 # YOUR CODE HERE
 
-TOKEN = '1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4'
-#@isael_ayuda_bot
-#1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE
-
-#@isael_automatize_bot
+TOKEN = os.environ['TOKEN']
+#TOKEN = "1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE"
 #1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4
 
 TRADUCIR, BUSCAR= range(2)

@@ -23,13 +23,13 @@ import os
 
 # YOUR CODE HERE
 
-if os.environ["USERNAME"]:
+try:
     if os.environ["USERNAME"] == "Isael":
         TOKEN = "1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4"
     else:
         pass
-else: 
-    TOKEN = "1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE"
+except:
+    TOKEN = "1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE"   
 
 TRADUCIR, BUSCAR= range(2)
 

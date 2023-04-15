@@ -1,7 +1,7 @@
 # Personal Ignore File and Directory
-testing/
+test/
+*_test/
 .idea/
-TEMPORAL.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

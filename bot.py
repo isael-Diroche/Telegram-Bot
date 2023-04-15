@@ -6,6 +6,7 @@ from googletrans import Translator
 from firebase import firebase
 import sqlite3
 from gtts import gTTS
+import chistesESP
 import random
 import re
 import os

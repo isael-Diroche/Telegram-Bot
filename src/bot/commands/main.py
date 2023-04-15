@@ -25,7 +25,7 @@ def contact_command(update: Update, context: CallbackContext) -> None:
 
 # Nuevos comandos en camino
 
-#def chiste_command(update: Update, context: CallbackContext) -> None:
+def chiste_command(update: Update, context: CallbackContext) -> None:
 
 #def broma_command(update: Update, context: CallbackContext) -> None:
 

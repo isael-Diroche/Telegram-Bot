@@ -6,7 +6,8 @@ from googletrans import Translator
 from firebase import firebase
 import sqlite3
 from gtts import gTTS
-import chistesESP
+import chistesESP, pyjokes
+import wikipedia
 import random
 import re
 import os
@@ -22,9 +23,10 @@ import os
 
 # YOUR CODE HERE
 
-TOKEN = os.environ['TOKEN']
-#TOKEN = "1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE"
-#1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4
+if os.environ["USERNAME"] == "Isael":
+    TOKEN = "1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4"
+else: 
+    TOKEN = "1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE"
 
 TRADUCIR, BUSCAR= range(2)
 
@@ -49,7 +51,12 @@ def main() -> None:
     dp.add_handler(CommandHandler(command="contacto", callback=contact_command))
     dp.add_handler(CommandHandler(command="traduce", callback=traducir_command))
     dp.add_handler(CommandHandler(command="voice", callback=voice_command))
-    dp.add_error_handler(callback=error)
+    dp.add_handler(CommandHandler(command="broma", callback=broma_command))
+    dp.add_handler(CommandHandler(command="chiste", callback=chiste_command))
+    dp.add_handler(CommandHandler(command="buscar", callback=buscar_command))
+    dp.add_handler(CommandHandler(command="frace", callback=frase_command))
+
+    #dp.add_error_handler(callback=error)
 
     # FILTROS PRINCIPALES 
     dp.add_handler(MessageHandler(filters=Filters.entity("mention"), callback=mention.filter_mention))
@@ -67,8 +74,8 @@ def main() -> None:
         #CallbackQueryHandler(pattern='btn_contacto', callback=comando_contacto),
     ]
     states = {
-        #TRADUCIR: [MessageHandler(Filters.text, comando_translate)],
-        #BUSCAR: [MessageHandler(Filters.text, comando_buscar)]
+        TRADUCIR: [MessageHandler(Filters.text, traducir_command)],
+        BUSCAR: [MessageHandler(Filters.text, buscar_command)]
     }
     fallbacks = []
 

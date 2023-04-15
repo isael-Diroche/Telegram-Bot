@@ -5,7 +5,6 @@ from bot import Update, CallbackContext, ConversationHandler, Translator, ParseM
 
 translator = Translator()
 
-
 def command(update:Update, context:CallbackContext):
 
     message = update.effective_message

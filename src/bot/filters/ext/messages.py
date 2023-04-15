@@ -2,9 +2,18 @@
 
 from bot import Update, CallbackContext, random, re
 from src.bot.filters.questions import *
+from bs4 import BeautifulSoup
+import requests
+
 
 
 # YOUR CODE HERE
+
+def get_precio_dolar():
+    respuesta = requests.get('https://www.google.com/finance/quote/USD-DOP?sa=X&ved=2ahUKEwih-Pibm6z-AhVbQzABHeeiBXwQmY0JegQIBRAc')
+    soup = BeautifulSoup(respuesta.text, "html.parser")
+    precio = soup.find('div', class_='kf1m0').text
+    return precio
 
 def messages(update: Update, context: CallbackContext) -> None:
     user = update.effective_user
@@ -16,6 +25,18 @@ def messages(update: Update, context: CallbackContext) -> None:
 
     for x in msg:
         if x == "bot":
+
+            for y in msg:
+                if y == "hola":
+                    context.bot.sendMessage(chat_id = chat.id, 
+                                            text = f"Hola {user.first_name}")
+                
+                if y == "precio":
+                    for z in msg:
+                        if z == "dolar":
+                            precio = get_precio_dolar()
+                            context.bot.sendMessage(chat_id = chat.id, 
+                                                    text = f"El precio del dolar equivale a {precio} pesos dominicanos")
 
             def get_response(user_input):
                 split_message = re.split(r'\s|[,:;.?!-_]\s*', user_input)

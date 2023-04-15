@@ -1,6 +1,6 @@
 # IMPORT MODULES
 
-from bot import *
+from bot import Update, CallbackContext
 
 # YOUR CODE HERE
 class Filtrar:

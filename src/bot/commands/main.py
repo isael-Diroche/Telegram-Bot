@@ -1,7 +1,7 @@
 # Dependencias necesarias desde el script principal
 from bot import Update, CallbackContext
 
-from .ext import start, ayuda, reporte, contacto, traduce, texto_a_voz
+from .ext import start, ayuda, reporte, contacto, traduce, texto_a_voz, chistes, broma, archivar, buscar, frace_motivadora
 
 # Codigo aqui
 
@@ -26,10 +26,16 @@ def contact_command(update: Update, context: CallbackContext) -> None:
 # Nuevos comandos en camino
 
 def chiste_command(update: Update, context: CallbackContext) -> None:
+    chistes.command(update, context)
 
-#def broma_command(update: Update, context: CallbackContext) -> None:
+def broma_command(update: Update, context: CallbackContext) -> None:
+    broma.command(update, context)
 
-#def archivar_command(update: Update, context: CallbackContext) -> None:
+def archivar_command(update: Update, context: CallbackContext) -> None:
+    archivar.command(update, context)
 
-#def buscar_command(update: Update, context: CallbackContext) -> None:
+def buscar_command(update: Update, context: CallbackContext) -> None:
+    buscar.command(update, context)
 
+def frase_command(update: Update, context: CallbackContext) -> None:
+    frace_motivadora.command(update, context)

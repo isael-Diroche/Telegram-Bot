@@ -70,7 +70,7 @@ def messages(update: Update, context: CallbackContext) -> None:
                     response(admision, admision_user, single_response = True)
                     response(info, info_user, single_response = True)
                     precio = get_precio_dolar()
-                    response(precio_dollar.format(precio), precio_dollar_user, single_response = True)
+                    response(precio_dollar.format(round(float(precio), 2)), precio_dollar_user, single_response = True)
                     response(valores, valores_user, single_response = True)
                     response(contacto, contacto_user, single_response = True)
                     response(transporte, transporte_user, single_response = True)

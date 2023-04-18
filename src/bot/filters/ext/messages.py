@@ -1,6 +1,7 @@
 # IMPORT MODULES
 
-from bot import Update, CallbackContext, random, re
+from bot import Update, CallbackContext, random, re, pytz
+from datetime import datetime, timezone, timedelta
 from src.bot.filters.questions import *
 from bs4 import BeautifulSoup
 import requests
@@ -15,31 +16,25 @@ def get_precio_dolar():
     precio = soup.find('div', class_='kf1m0').text
     return precio
 
+def get_hora():
+    now_utc = datetime.now(pytz.timezone('UTC'))
+    fecha = now_utc.astimezone(pytz.timezone("America/Santo_Domingo"))
+    res = fecha.strftime('%I:%M:%S %p')
+    return res
+
 def messages(update: Update, context: CallbackContext) -> None:
     user = update.effective_user
     message = update.effective_message
     chat = update.effective_chat
 
-    text = str(message.text).lower() 
+    text = str(message.text)
     msg = text.split()
 
     for x in msg:
         if x == "bot":
 
-            for y in msg:
-                if y == "hola":
-                    context.bot.sendMessage(chat_id = chat.id, 
-                                            text = f"Hola {user.first_name}")
-                
-                if y == "precio":
-                    for z in msg:
-                        if z == "dolar":
-                            precio = get_precio_dolar()
-                            context.bot.sendMessage(chat_id = chat.id, 
-                                                    text = f"El precio del dolar equivale a {precio} pesos dominicanos")
-
             def get_response(user_input):
-                split_message = re.split(r'\s|[,:;.?!-_]\s*', user_input)
+                split_message = re.split(r'\s|[,:;.?!-_]\s*', user_input.lower())
                 response = check_all_messages(split_message)
                 return response
 
@@ -69,12 +64,13 @@ def messages(update: Update, context: CallbackContext) -> None:
                         nonlocal highest_prob
                         highest_prob[bot_response] = message_probability(message, list_of_words, single_response, required_words)
 
-                    response(saludos[random.randrange(3)], saludos_user, single_response = False)
-                    response(carreras, carreras_user, single_response = True)
-                    response(redes_sociales, redes_sociales_user, single_response = True,)
+                    response(saludos[random.randrange(4)].format(user.first_name), saludos_user, single_response = False)
+                    response(despedidas[random.randrange(4)].format(user.first_name), despedidas_user, single_response = True)
+                    response(hora[random.randrange(3)].format(get_hora()), hora_user, single_response = True,)
                     response(admision, admision_user, single_response = True)
                     response(info, info_user, single_response = True)
-                    response(ubicacion, ubicacion_user, single_response = True)
+                    precio = get_precio_dolar()
+                    response(precio_dollar.format(precio), precio_dollar_user, single_response = True)
                     response(valores, valores_user, single_response = True)
                     response(contacto, contacto_user, single_response = True)
                     response(transporte, transporte_user, single_response = True)
@@ -92,7 +88,8 @@ def messages(update: Update, context: CallbackContext) -> None:
                 response = unknown[random.randrange(3)]
                 return response
 
-            context.bot.sendMessage(chat_id=chat.id, text=f"{get_response(message.text)}")
+            context.bot.sendMessage(chat_id=chat.id, text=f"{get_response(text)}")
+
         else:
             pass
 

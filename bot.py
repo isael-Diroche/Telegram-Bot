@@ -8,7 +8,9 @@ import sqlite3
 from gtts import gTTS
 import chistesESP, pyjokes
 import wikipedia
+import datetime
 import random
+import pytz
 import re
 import os
 

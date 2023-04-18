@@ -1,26 +1,18 @@
-import wikipedia
-from datetime import timezone, datetime, timedelta
 
-
-def recibir_hora():
-    now_utc = datetime.now(timezone('UTC'))
-    fecha = now_utc.astimezone(timezone("America/Santo_Domingo"))
-    res = fecha.strftime('%I:%M:%S %p')
-    return res
-
-######################################################################################################################################################
-
-saludos = ['Hola', 'Hello', 'Buenas', 'Aqui estamos']
+saludos = ['Hola {}', 'Buenas {} 👋', 'Que tal {}!', '👋']
 saludos_user = ['hola', 'klk', 'saludos', 'buenas']
 
-carreras = [f'no me se la hora']
-carreras_user = ['hora', 'horario', 'cual es']
+despedidas = ['Adios {}', 'Hasta luego {} 👋', 'Nos vemos {}!', '👋']
+despedidas_user = ['adios', 'klk', 'saludos', 'buenas']
 
-ubicacion = 'El ITLA esta ubicado en Autopista Las Américas, Km. 27, PCSD, La Caleta, Boca Chica 11606.'
-ubicacion_user = ['ubicacion', 'ubicados', 'ubicado', 'se encuentra', 'que lugar', 'ubica']
+haroldy = ['Me huele a vago cuando dicen ese nombre', 'ese vago no programa ni un hello word' ]
+haroldy_user = ['harol', 'haroldy']
 
-redes_sociales = 'El ITLA tiene varias redes sociales como: Youtube, Twitter, WhatsApp, Facebook, Instagram.'
-redes_sociales_user = ['redes', 'sociales', 'social', 'comunicaciones', 'comunicacion']
+hora = ['son las {}', 'La hora es {}', 'yo que se']
+hora_user = ['hora', 'hora es', 'hora son']
+
+precio_dollar = 'el precio del dollar equivale a {} pesos dominicanos'
+precio_dollar_user = ['dollar', 'dolar', 'precio', 'vale']
 
 admision =  '1. Realizar la solicitud de admisión ' \
             '2. Realizar el pago por derecho a admisión de RD$500.00 ' \
@@ -48,5 +40,7 @@ biblioteca = 'La Biblioteca Prof. Erich Kunhardt Grullón ofrece una amplia vari
              'libre y gratuito a Internet.'
 biblioteca_user = ['biblioteca', 'libros', 'donde leer', 'lectura','leer']
 
-residencia = 'Nuestra Residencia académica ofrece alojamiento a los estudiantes activos de educación superior del Instituto Tecnológico de las Américas, dando prioridad a los jóvenes provenientes de las diferentes provincias del país.'
-residencia_user = ['residencia', 'residir']
+residencia = 'Nose'
+residencia_user = ['por qué', 'por que']
+
+unknown = ['Puedes decirlo de nuevo?', 'No estoy seguro de lo quieres', 'Búscalo en google a ver que tal', 'No te entiendo']

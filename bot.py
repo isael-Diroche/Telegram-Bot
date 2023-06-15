@@ -6,7 +6,7 @@ from googletrans import Translator
 from firebase import firebase
 import sqlite3
 from gtts import gTTS
-import chistesESP, pyjokes
+import pyjokes
 import wikipedia
 import datetime
 import random

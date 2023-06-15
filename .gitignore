@@ -1,7 +1,8 @@
 # Personal Ignore File and Directory
 test/
 *_test/
-.idea/ 
+.idea/
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

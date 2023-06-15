@@ -20,18 +20,16 @@ from src.bot.filters.ext import mention, hashtag
 from src.bot.filters.ext.messages import messages
 from src.bot.commands.main import *
 from src.conexion import *
+import TOKEN
 
 import os
 
 # YOUR CODE HERE
 
 try:
-    if os.environ["USERNAME"] == "Isael":
-        TOKEN = "1985333182:AAFKNzhBvBG6Gkp-uFx76021iqM7iqnRDo4"
-    else:
-        pass
+    TOKEN = TOKEN.TOKEN    
 except:
-    TOKEN = "1865520485:AAGs-C7Buc0C3pUTry0HqA-DqKZt04fJBVE"   
+    print(f"No funciona el token: {Exception}")
 
 TRADUCIR, BUSCAR= range(2)
 

@@ -1,7 +1,8 @@
 # IMPORT MODULES
 from telegram import CallbackQuery, Update, ParseMode, ChatAction, ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton, ReplyKeyboardRemove, ReplyKeyboardMarkup
 from telegram.ext import ConversationHandler, CommandHandler, Updater, Dispatcher, Filters, CallbackQueryHandler, CallbackContext, MessageHandler
-
+from bs4 import BeautifulSoup
+import requests
 from googletrans import Translator
 from firebase import firebase
 import sqlite3

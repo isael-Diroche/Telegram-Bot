@@ -11,8 +11,11 @@ TOKEN = os.getenv('TOKEN')
 def main() -> None:
     updater = Updater(token=TOKEN, use_context=True)
 
-    updater.dispatcher.add_handler(CommandHandler(
-        command="start", callback=start_command))
+    updater.dispatcher.add_handler(CommandHandler(command="start", callback=start_command))
+    updater.dispatcher.add_handler(CommandHandler(command="help", callback=help_command))
+    #updater.dispatcher.add_handler(CommandHandler(command="traduce", callback=traduce_command))
+    #updater.dispatcher.add_handler(CommandHandler(command="voice", callback=voice_command))
+    #updater.dispatcher.add_handler(CommandHandler(command="chiste", callback=chiste_command))
 
     entry_points = []
     states = {}

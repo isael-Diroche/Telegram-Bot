@@ -1,5 +1,5 @@
-# Bot Firulais 🐶 
-> _Iniciado el 12 de Octubre del 2021 por **Isael Diroche**_
+# TeleHelpBot 🤖 
+ _Iniciado el 12 de Octubre del 2021 por **Isael Diroche**_
 ---
 
 ## ➜ Bot de telegram

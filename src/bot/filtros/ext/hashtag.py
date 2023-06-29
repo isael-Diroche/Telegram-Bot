@@ -1,5 +1,3 @@
-# IMPORT MODULES
-
 from bot import *
 
 # YOUR CODE HERE

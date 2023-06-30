@@ -1,6 +1,4 @@
-from bot import *
-
-# YOUR CODE HERE
+from bot import Update, CallbackContext, requests, BeautifulSoup
 
 
 def get_random_chiste():

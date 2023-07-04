@@ -3,7 +3,7 @@ test/
 *_test/
 .idea/
 .vscode/
-TOKEN.py
+notes/record.mp3
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

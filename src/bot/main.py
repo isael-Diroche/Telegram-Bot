@@ -2,7 +2,9 @@ from telegram import Update, ParseMode, ChatAction
 from telegram.ext import CallbackContext, ConversationHandler
 
 from googletrans import Translator
+from bs4 import BeautifulSoup
 from gtts import gTTS
+import requests
 
 translator = Translator()
 
@@ -16,7 +18,8 @@ class Comando:
             ("/help", "Pedir ayuda al bot"),
             ("/traduce", "Traducir ingles / español"),
             ("/voice", "Convertir texto a voz"),
-            #("/chiste", "Enviar un chiste"),
+            ("/chiste", "Enviar un chiste"),
+            ("/motivame", "Envia un mensaje motivador"),
         ]
         
         context.bot.setMyCommands(comandos)
@@ -25,10 +28,12 @@ class Comando:
         user_name = update.effective_user.first_name
         user_id = update.effective_user.id
         get_members = context.bot.get_chat_member(update.effective_chat.id, user_id)
-        get_members = translator.translate(str(get_members.status), dest="es").text
+        status = str(get_members.status)
+        get_members = translator.translate(status, dest="es").text
+        
         get_member_count = context.bot.get_chat_member_count(update.effective_chat.id)
     
-        msg = "Hola {}({}) gracias por activarme, por lo que veo aqui hay {} usuarios. Si necesitas ayuda en algo no dudes en consultarme, si quieres saber lo que puedo hacer puedes usar el comando /help o darle un vistazo a la <a href='https://telegra.ph/Firulais-Documentacion-05-27'>documentacion</a> por @IsaelDiroche".format(user_name, get_members, get_member_count)
+        msg = "Hola {}({}) gracias por activarme, por lo que veo aqui hay {} usuarios. Si necesitas ayuda en algo no dudes en consultarme, si quieres saber lo que puedo hacer puedes usar el comando /help o darle un vistazo a la <a href='https://github.com/isael-Diroche/TeleHelpBot/tree/main#comandos'>documentacion</a> por @IsaelDiroche".format(user_name, get_members, get_member_count)
 
         try:
             context.bot.sendMessage(chat_id = update.effective_chat.id,
@@ -55,11 +60,8 @@ class Comando:
         
         try:
             message = str(update.effective_message.reply_to_message.text).lower()
-            print(message)
-            print("------------------------------")
         except:
             message = str(update.effective_message.text).replace("#traduce ", "")
-            print(message)
             
         info = translator.translate(message)
         
@@ -112,8 +114,42 @@ class Comando:
             with open(file, 'rb') as record:
                 context.bot.send_voice(chat_id=update.effective_chat.id, voice=record)
 
+    def chiste(self, update, context) -> None:
+        message = str(update.effective_message.text).lower()
+        chat_id = update.effective_chat.id
+        
+        # Mostrar el estado de escribiendo mientras traduce el texto
+        context.bot.sendChatAction(chat_id = update.effective_chat.id,
+                                   action = ChatAction.TYPING)
+        
+        response = requests.get('http://www.todo-chistes.com/chistes-al-azar')
+        soup = BeautifulSoup(response.text, "html.parser")
+        chiste = soup.find("div", "field-chiste").text
+        
+        context.bot.sendMessage(chat_id, chiste)
+        
+    
+    def motivame(self, update, context) -> None:
+        message = str(update.effective_message.text).lower()
+        chat_id = update.effective_chat.id
 
-    # Comandos con el filtro de hashtag (#)    
+        # Mostrar el estado de escribiendo mientras traduce el texto
+        context.bot.sendChatAction(chat_id = update.effective_chat.id,
+                                   action = ChatAction.TYPING)
+        
+        respuesta = requests.get('https://frasesmotivacion.net/frase-aleatoria')
+        soup = BeautifulSoup(respuesta.text, "html.parser")
+        frase = soup.find("blockquote").text
+        
+        context.bot.sendMessage(chat_id, frase)
+        
+        
+        
+        
+        
+    
+    
+# Comandos con el filtro de hashtag (#)    
 class Hashtag(Comando):
     
     def main(self, update, context):    

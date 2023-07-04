@@ -21,6 +21,8 @@ def main() -> None:
     updater.dispatcher.add_handler(CommandHandler(command="help", callback=comando.help))
     updater.dispatcher.add_handler(CommandHandler(command="traduce", callback=comando.traduce))
     updater.dispatcher.add_handler(CommandHandler(command="voice", callback=comando.voice))
+    updater.dispatcher.add_handler(CommandHandler(command="chiste", callback=comando.chiste))
+    updater.dispatcher.add_handler(CommandHandler(command="motivame", callback=comando.motivame))
     #updater.dispatcher.add_handler(CommandHandler(command="chiste", callback=comando.chiste))
 
     # FILTROS PRINCIPALES   

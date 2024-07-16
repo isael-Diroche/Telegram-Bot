@@ -1,54 +1,31 @@
-# TeleHelpBot 🤖 
- _Iniciado el 12 de Octubre del 2021 por **Isael Diroche**_
+# Telegram Bot - Firulais 🤖
+*October 12th, 2021 by Isael Diroche*
 ---
 
-TeleHelpBot @isael_ayuda_bot, es un bot de Telegram creado por Isael Diroche con la finalidad de administrar un grupo, proporcionar información, manejar datos y facilitar acciones repetitivas. Fue creado aproximadamente en Agosto del año 2021 aunque la idea ya había surgido desde poco antes desplegarlo fue una mierd*, realizar este proyecto no fue mas que el producto de una motivación originada en el bot @Jonathanitlabot.
+Telegram bot [@isael_ayuda_bot](https://t.me/isael_ayuda_bot) is a Telegram bot created by Isael Diroche to manage a group, provide information, handle data, and facilitate repetitive actions. It was created around August 2021, although the idea had emerged a bit earlier. Deploying it was a hassle, but this project was motivated by the bot [@Jonathanitlabot](https://t.me/Jonathanitlabot).
 
-#### _Si te interesa colaborar y ser parte de este proyecto o con la documentación la cual puede verse abecés incompleta o desactualizada, no dudes en contactarme como @Isael_Diroche en Telegram._
+#### _If you are interested in collaborating and being part of this project or contributing to the documentation, which may sometimes be incomplete or outdated, feel free to contact me at [@Isael_Diroche](https://t.me/Isael_Diroche) on Telegram._
 
-<br>
 
-## Comandos
-Acerca de los comandos estos son los comandos que posee el bot por el momento. Segun los valla actualizando podria ir introduciendo otros.
-<br>
-<br>
-#### **Comando /start**
+## Commands
 
-La funcionalidad de este comando será para dar inicio al Bot y también comprobar el estado de funcionamiento del bot percatándose de que esta en funcionamiento. **No requerirá de ningún parámetro.**
+Below are the commands currently available for the bot. As updates are made, new commands might be introduced.
 
-```
-/start
-```
-<br>
+### **Command /start**
 
-#### **Comando /help**
+The functionality of this command is to start the bot and also check its operational status, ensuring it is working correctly. **No parameters are required.**
 
-Este comando se encargara de proporcionar información básica acerca de los comandos del bot para que el usuario logre comprender algunas de sus características y parámetros en estos. **No requiere ningún parámetro.**
+### **Command /help**
 
-```
-/help
-```
+This command provides basic information about the bot's commands so that users can understand some of its features and parameters. **No parameters are required.**
 
-<br>
+### **Command /traduce**
 
-#### **Comando /traduce**
+This command allows users to translate text either from English to Spanish or vice versa. It accepts the text to be translated as a parameter.
 
-Este comando servirá para que los usuarios puedan traducir texto ya sea de ingles a español o viceversa. Este recibirá como parámetro el texto que se desea que sea traducido.
+### **Command /voice**
 
-```
-/traduce + texto
-```
-
-<br>
-
-#### **Comando /voice**
-
-Con este comando se podrá convertir texto a un audio que el bot se encargara de enviar. Para que este comando funcione correctamente será necesario que se le pase como **parámetro** el texto que queremos que este convierta a voz.
-
-```
-/voice + texto
-```
-
+With this command, users can convert text to audio, which the bot will send. To work correctly, this command requires the text to be converted to voice as a **parameter**.
 
 ---
-Por ahora esto es todo del bot, gracias por interesarte en visitar su documentacion.
+For now, this is all about the bot. Thank you for taking the time to visit its documentation.
